@@ -8,8 +8,9 @@ using SimpleJSON;
 
 public class LeaderboardCreationManager : MonoBehaviour
 {
-    [SerializeField] private TMP_InputField numberOfColumnsInput;
+    public TMP_InputField numberOfColumnsInput;
     [SerializeField] private TMP_InputField searchInput;
+    [SerializeField] private TMP_InputField keyTextGenerated;
     //[SerializeField] private List<TMP_Dropdown> dataTypeDropdowns;
 
     [SerializeField] private TextMeshProUGUI errorText;
@@ -28,9 +29,9 @@ public class LeaderboardCreationManager : MonoBehaviour
 
     [SerializeField] private Transform entryContent;
 
-    [SerializeField] private List<GameObject> instantiatedColumnPrefabs;  
+    public List<GameObject> instantiatedColumnPrefabs;  
 
-    private int numberOfColumns = 0;
+    [HideInInspector] public int numberOfColumns = 0;
     private string uniqueKey;
     private string currentLeaderboardKey; // Store the key of the current leaderboard being edited
     private bool isEditMode = false;
@@ -45,6 +46,7 @@ public class LeaderboardCreationManager : MonoBehaviour
         currentLeaderboardKey = uniqueKey;
         Debug.Log($"Unique Key: {uniqueKey}");
         keyText.text = $"Unique Key: {uniqueKey}";
+        keyTextGenerated.text = $"{uniqueKey}";
         isEditMode = false;
         generateButtonText.text = "Generate";
     }
@@ -296,7 +298,7 @@ public class LeaderboardCreationManager : MonoBehaviour
     private void DisplayLeaderboardTable()
     {
         // Populate the table with leaderboard data
-        // You can fetch data from Firebase here and populate the table rows accordingly
+        // Will fetch data from Firebase here and populate the table rows accordingly
         // For demonstration purposes, let's assume we have some sample data
 
         for (int i = 0; i < instantiatedColumnPrefabs.Count; i++)
@@ -307,9 +309,9 @@ public class LeaderboardCreationManager : MonoBehaviour
 
         List<string[]> sampleData = new List<string[]>
         {
-            /*new string[] { "Player 1", "100", "50", "true" },
+            new string[] { "Player 1", "100", "50", "true" },
             new string[] { "Player 2", "80", "60", "false" },
-            new string[] { "Player 3", "120", "70", "true" }*/
+            new string[] { "Player 3", "120", "70", "true" }
         };
 
         // Instantiate table rows and populate them with data
