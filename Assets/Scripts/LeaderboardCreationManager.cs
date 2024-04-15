@@ -294,6 +294,8 @@ public class LeaderboardCreationManager : MonoBehaviour
         return configurationJSON;
     }
 
+
+
     // Method to display the leaderboard as a table
     private void DisplayLeaderboardTable()
     {

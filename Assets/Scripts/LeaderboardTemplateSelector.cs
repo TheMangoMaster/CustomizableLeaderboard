@@ -5,7 +5,6 @@ using TMPro;
 
 public class LeaderboardTemplateSelector : MonoBehaviour
 {
-
     public enum Columns
     {
         ONE,
